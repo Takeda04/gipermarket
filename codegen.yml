@@ -1,0 +1,11 @@
+overwrite: true
+schema: 'https://api.gipermart.uz/graphql/'
+documents: 'graphql/**/*.graphql'
+generates:
+  graphql/generated.graphql.tsx:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      withHooks: true

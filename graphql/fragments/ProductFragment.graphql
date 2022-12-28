@@ -1,0 +1,95 @@
+fragment product on Product {
+  name
+  inDiscount
+  id
+  slug
+  isAvailable
+  isAvailableForPurchase
+  category {
+    name
+  }
+  media {
+    url
+    alt
+  }
+  thumbnail {
+    url
+    alt
+  }
+  productType {
+    id
+  }
+  defaultVariant {
+    ...productVariant
+  }
+  pricing {
+    onSale
+    discount {
+      currency
+      gross {
+        currency
+        amountInSum
+        amount
+      }
+    }
+    priceRange {
+      start {
+        net {
+          currency
+          amountInSum
+          amount
+        }
+        gross {
+          currency
+          amount
+          amountInSum
+        }
+      }
+      stop {
+        gross {
+          currency
+          amount
+          amountInSum
+        }
+      }
+    }
+  }
+
+  __typename
+}
+
+fragment singleProduct on Product {
+  ...product
+  description
+  characteristics
+  attributes {
+    attribute {
+      id
+      name
+      unit
+    }
+    values {
+      id
+      name
+      value
+    }
+  }
+  variants {
+    ...productVariant
+  }
+  defaultVariant {
+    ...productVariant
+  }
+  productType {
+    name
+    slug
+    hasVariants
+    weight {
+      unit
+      value
+      __typename
+    }
+    isDigital
+    __typename
+  }
+}

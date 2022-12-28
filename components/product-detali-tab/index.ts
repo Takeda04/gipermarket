@@ -1,0 +1,1 @@
+export { ProductDetailTab } from './product-detali-tab';

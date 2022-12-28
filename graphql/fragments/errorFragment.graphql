@@ -1,0 +1,5 @@
+fragment errors on AccountError {
+  field
+  message
+}
+

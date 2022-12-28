@@ -1,0 +1,72 @@
+#import "../fragments/CategoryFragment.graphql"
+#import "../fragments/ProductFragment"
+
+query allCategories($first: Int!, $cursor: String!) {
+  categories(first: $first, after: $cursor) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        ...categoryAtributes
+        children(first: 20) {
+          edges {
+            node {
+              ...categoryAtributes
+            }
+          }
+        }
+        parent {
+          ...categoryAtributes
+        }
+      }
+    }
+  }
+}
+query category(
+  $first: Int
+  $slug: String!
+  $cursor: String!
+  $before: String
+  $last: Int
+  $filter: ProductFilterInput
+  $sort: ProductOrder
+  $id: ID
+) {
+  category(slug: $slug, id: $id) {
+    name
+    id
+    children(first: 100) {
+      edges {
+        node {
+          ...categoryAtributes
+        }
+      }
+    }
+    products(
+      channel: "default-channel"
+      first: $first
+      after: $cursor
+      filter: $filter
+      sortBy: $sort
+      before: $before
+      last: $last
+    ) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      edges {
+        cursor
+        node {
+          ...product
+        }
+      }
+    }
+  }
+}

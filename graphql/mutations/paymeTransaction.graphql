@@ -1,0 +1,9 @@
+mutation PaymeTransaction($input: PaymeInput!) {
+  paymeTransactionCreate(input: $input) {
+    url
+    errors {
+      field
+      message
+    }
+  }
+}

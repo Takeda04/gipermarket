@@ -1,0 +1,22 @@
+#import './addressFragment.graphql'
+
+fragment User on User {
+  id
+  lastLogin
+  phone
+  firstName
+  lastName
+  avatar {
+    url
+    __typename
+  }
+  addresses {
+    ...Address
+    __typename
+  }
+  defaultShippingAddress {
+    ...Address
+    __typename
+  }
+  __typename
+}

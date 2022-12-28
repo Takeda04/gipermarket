@@ -1,0 +1,9 @@
+query getSpecialOrder($phone:String){
+ 	specialOrderByPhone(phone:$phone){
+    url
+    status
+    user{
+      firstName
+    }
+  }
+}

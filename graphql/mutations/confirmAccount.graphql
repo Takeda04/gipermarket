@@ -1,0 +1,18 @@
+#import '../fragments/userFragment.graphql'
+#import '../fragments/addressFragment.graphql'
+
+mutation confirmAccount($code: String!, $phone: String!) {
+  confirmAccount(token: $code, phone: $phone) {
+    accountErrors {
+      field
+      message
+      code
+      __typename
+    }
+    user {
+      ...User
+      __typename
+    }
+    __typename
+  }
+}

@@ -1,0 +1,12 @@
+#import "../fragments/addressFragment"
+#import "../fragments/errorFragment"
+mutation AddressUpdate($id:ID!,$input:AddressInput!){
+  addressUpdate(id:$id,input:$input){
+    errors{
+      ...errors
+    }
+    address{
+      ...Address
+    }
+  }
+}

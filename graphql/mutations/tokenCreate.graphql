@@ -1,0 +1,14 @@
+mutation login($phone: String!, $password: String!) {
+  tokenCreate(password: $password, phone: $phone) {
+    errors {
+      field
+      message
+    }
+    token
+    refreshToken
+    csrfToken
+    user{
+      id
+    }
+  }
+}

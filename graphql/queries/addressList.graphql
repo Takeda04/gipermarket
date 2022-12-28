@@ -1,0 +1,9 @@
+#import "../fragments/addressFragment"
+query AddressList{
+  me{
+    addresses{
+      ...Address
+    }
+  }
+
+}

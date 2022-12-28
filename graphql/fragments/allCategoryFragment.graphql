@@ -1,0 +1,13 @@
+fragment CategoryFragment on Category {
+  id
+  name
+  children {
+    totalCount
+    __typename
+  }
+  products {
+    totalCount
+    __typename
+  }
+  __typename
+}

@@ -1,0 +1,45 @@
+#import '../fragments/ProductFragment.graphql'
+#import '../fragments/CategoryFragment.graphql'
+
+query allProducts($first: Int!,$search: String, $last:Int ,$cursor: String,$before:String, $isRec: Boolean) {
+  products(
+    first: $first,
+    before:$before,
+    last:$last,
+    filter: { search: $search, isRecommended: $isRec },
+    channel: "default-channel",
+    after: $cursor,
+  ) {
+    totalCount
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+      __typename
+    }
+    edges {
+      node {
+        ...product,
+        isRecommended
+      }
+      __typename
+    }
+    __typename
+  }
+}
+
+
+query singleProduct($slug: String!) {
+  product(slug: $slug, channel: "default-channel") {
+    category {
+      ...categoryAtributes
+    }
+    seoTitle
+    seoDescription
+    description
+    rating
+    channel
+    ...singleProduct
+  }
+}

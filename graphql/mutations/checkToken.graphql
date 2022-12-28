@@ -1,0 +1,7 @@
+mutation checkTokens($phone:String!,$token:String!){
+ 	checkToken(phone:$phone,token:$token){
+    errors{
+      message
+    }
+  }
+}

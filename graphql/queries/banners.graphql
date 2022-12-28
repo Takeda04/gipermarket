@@ -1,0 +1,39 @@
+query Banners($first:Int!,$after:String,$filter:BannerFilterInput!){
+  banners (filter:$filter,first:$first,after:$after){
+    pageInfo{
+      hasNextPage
+      endCursor
+    }
+    edges{
+      node{
+        id
+        title
+        description
+        viewType
+        backgroundImage {
+          url
+          alt
+        }
+        viewType
+        redirectUrl
+      }
+    }
+  }
+}
+
+query UsaBanners {
+  banners(first:50,filter:{type:"USA_LOGO"}){
+    edges{
+      node{
+        id,
+        title,
+        redirectUrl,
+        description,
+        backgroundImage{
+          url,
+          alt
+        }
+      }
+    }
+  }
+}

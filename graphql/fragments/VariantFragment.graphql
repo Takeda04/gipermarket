@@ -1,0 +1,33 @@
+fragment productVariant on ProductVariant {
+  id
+  name
+  sku
+  getPriceWithInstallment
+  attributes {
+    attribute {
+      name
+      id
+    }
+    values {
+      value
+      name
+      id
+    }
+  }
+  pricing {
+    discount {
+      gross {
+        currency
+        amount
+        amountInSum
+      }
+    }
+    price {
+      gross {
+        currency
+        amountInSum
+        amount
+      }
+    }
+  }
+}

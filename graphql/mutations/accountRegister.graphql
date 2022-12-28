@@ -1,0 +1,20 @@
+#import '../fragments/userFragment.graphql'
+
+mutation register($phone: String!, $password: String!,  $firstName:String!, $lastName:String) {
+  accountRegister(
+    input: {
+      phone: $phone,
+      password: $password,
+      firstName: $firstName,
+      lastName: $lastName
+    }
+  ) {
+    errors {
+      message
+      field
+    }
+    user {
+      ...User
+    }
+  }
+}

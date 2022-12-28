@@ -1,0 +1,10 @@
+fragment categoryAtributes on Category {
+  id
+  name
+  slug
+  level
+  backgroundImage {
+    url
+    alt
+  }
+}

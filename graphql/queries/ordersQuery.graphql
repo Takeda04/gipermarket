@@ -1,0 +1,35 @@
+# import '../fragments/pageInfoFragment'
+
+query Orders($first: Int!, $cursor: String) {
+  me {
+    orders(first: $first, after: $cursor) {
+      edges {
+        node {
+          id
+          number
+          payments {
+            id
+          }
+          statusDisplay
+          status
+          isPaid
+          created
+          fulfillments {
+            status
+          }
+          lines {
+            productName
+            thumbnail {
+              url
+              alt
+            }
+          }
+        }
+      }
+      pageInfo {
+        ...PageInfo
+        __typename
+      }
+    }
+  }
+}

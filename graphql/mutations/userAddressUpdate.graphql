@@ -1,0 +1,12 @@
+#import "../fragments/addressFragment"
+#import "../fragments/errorFragment"
+mutation UserAddressUpdate($id:ID!,$input:AddressInput!){
+  accountAddressUpdate(id:$id,input:$input){
+    user{
+      ...User
+    }
+    errors{
+      ...errors
+    }
+  }
+}

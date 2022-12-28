@@ -1,0 +1,12 @@
+#import "../fragments/addressFragment"
+#import "../fragments/errorFragment"
+mutation UserAddressCreate($input:AddressInput!){
+  accountAddressCreate(input:$input){
+    user{
+      ...User
+    }
+    errors{
+      ...errors
+    }
+  }
+}

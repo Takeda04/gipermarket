@@ -1,0 +1,37 @@
+fragment CheckoutError on CheckoutError {
+  field
+  code
+  message
+  __typename
+}
+
+mutation checkoutCreate($input: CheckoutCreateInput!) {
+  checkoutCreate(input: $input) {
+    checkout {
+      id
+      token
+      totalPrice {
+        gross {
+          amount
+          currency
+          __typename
+        }
+        __typename
+      }
+      isShippingRequired
+      shippingPrice {
+        gross {
+          amount
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    errors {
+      ...CheckoutError
+      __typename
+    }
+    __typename
+  }
+}

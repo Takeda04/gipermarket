@@ -1,0 +1,56 @@
+fragment PageInfoFragment on PageInfo {
+  endCursor
+  hasNextPage
+  hasPreviousPage
+  startCursor
+  __typename
+}
+
+fragment FileFragment on File {
+  url
+  contentType
+  __typename
+}
+
+fragment AttributeValueFragment on AttributeValue {
+  id
+  name
+  slug
+  file {
+    ...FileFragment
+    __typename
+  }
+  reference
+  richText
+  boolean
+  date
+  dateTime
+  value
+  __typename
+}
+
+query SearchAttributeValues(
+  $id: ID
+  $after: String
+  $first: Int!
+  $query: String!
+) {
+  attribute(id: $id) {
+    id
+    choices(after: $after, first: $first, filter: { search: $query }) {
+      edges {
+        node {
+          ...AttributeValueFragment
+          __typename
+        }
+        __typename
+      }
+      pageInfo {
+        ...PageInfoFragment
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}

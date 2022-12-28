@@ -1,0 +1,36 @@
+query InitialProductFilterAttributes($slug: String!, $choicesCursor: String) {
+  category(slug: $slug) {
+    parent {
+      level
+      name
+    }
+    products(first: 1) {
+      edges {
+        node {
+          productType {
+            productAttributes {
+              name
+              slug
+              availableInGrid
+              choices(after: $choicesCursor, first: 100) {
+                pageInfo {
+                  hasNextPage
+                  endCursor
+                }
+                edges {
+                  node {
+                    id
+                    slug
+                    name
+                    value
+                  }
+                }
+              }
+              inputType
+            }
+          }
+        }
+      }
+    }
+  }
+}

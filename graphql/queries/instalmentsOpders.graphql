@@ -1,0 +1,16 @@
+query InstalmetsOrder($id:ID!,$first:Int!){
+  contracts(user:$id,first:$first){
+    edges {
+      node{
+        products
+        status
+        paymentDate
+        createdAt
+        limit
+        totalPrice
+        totalCount
+        
+      }
+    }
+  }
+}

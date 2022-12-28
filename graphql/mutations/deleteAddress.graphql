@@ -1,0 +1,9 @@
+#import "../fragments/errorFragment"
+
+mutation DeleteAddress($id:ID!){
+  addressDelete(id:$id){
+    errors{
+      ...errors
+    }
+  }
+}

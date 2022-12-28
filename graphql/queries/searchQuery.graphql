@@ -1,0 +1,11 @@
+query searchProducts($search: String!) {
+  products(filter: { search: $search }, channel: "default-channel", first: 10) {
+    edges {
+      node {
+        id
+        name
+        slug
+      }
+    }
+  }
+}

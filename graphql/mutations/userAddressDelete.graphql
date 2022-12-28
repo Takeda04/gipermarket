@@ -1,0 +1,12 @@
+#import "../fragments/addressFragment"
+#import "../fragments/errorFragment"
+mutation UserAddressDelete($id:ID!){
+  accountAddressDelete(id:$id){
+    user{
+      ...User
+    }
+    errors{
+      ...errors
+    }
+  }
+}
